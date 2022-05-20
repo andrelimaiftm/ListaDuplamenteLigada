@@ -7,6 +7,10 @@ public class App {
         lista.adicionar(new No("C", null, null));
         lista.adicionar(new No("D", null, null));
         novoElemento = new No("E", null, null);
+        lista.adicionar(novoElemento);
+        lista.adicionar(2, new No("Z", null, null));
+        lista.print();
+        lista.remove(3);
         lista.print();
     }
 }

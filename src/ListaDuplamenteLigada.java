@@ -14,6 +14,42 @@ public class ListaDuplamenteLigada {
             this.cauda = novoElemento;
         }
     }
+//metodo adiciona onde informamos a posição da inserção
+    public void adicionar(int posicao, No novoElemento){
+        No aux = cabeca;
+        int i = 0;
+
+        //mova o nó para a posição de inserção
+        while(aux.getProx() != null && i < posicao-1){
+            aux = aux.getProx();
+            i++;
+        }
+
+        novoElemento.setProx(aux.getProx());
+        aux.setProx(novoElemento);
+        novoElemento.setAnt(aux);
+        novoElemento.getProx().setAnt(novoElemento);
+    }
+
+    public void remove(int posicao){
+        No aux = cabeca;
+        int i = 0;
+        //Mova o nó para o nó anterior que deseja excluir
+        while (aux.getProx() != null && i <posicao-1){
+            aux = aux.getProx();
+            i++;
+        }
+
+        No temp = aux.getProx();
+        aux.setProx((aux.getProx()).getProx());
+        aux.getProx().setAnt(aux);
+        temp.setProx(null);
+        temp.setAnt(null);
+
+        if(aux.getProx() == null){
+            cauda = aux;
+        }
+    }
 
     public void print(){
         No aux = this.cabeca;
